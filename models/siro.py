@@ -37,8 +37,9 @@ class SiroCodeBar(models.Model):
     @api.constrains('identificador_cuenta')
     def check_identificador_cuenta(self):
         self.ensure_one()
-        if self.identificador_cuenta.__len__() != 10:
-            raise ValidationError("El número de identificador de cuenta debe tener una cantidad de 10 caracteres.")
+        if self.id:
+            if self.identificador_cuenta.__len__() != 10:
+                raise ValidationError("El número de identificador de cuenta debe tener una cantidad de 10 caracteres.")
 
     def armaFecha(self, fecha):
         dd = datetime.date.strftime(fecha,"%d").zfill(2)
