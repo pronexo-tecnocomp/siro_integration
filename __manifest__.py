@@ -3,11 +3,11 @@
 
     'name': 'Siro',
     'version': '1',
-    'summary': 'Siro',
+    'summary': 'Siro Integration',
     'sequence': -101,
-    'description': """Siro""",
-    'author': 'MAN Group 2 ',
-    'maintainer': 'MAN Group 2',
+    'description': """Integracion con siro de banco roela""",
+    'author': 'DEVMAN',
+    'maintainer': 'DEVMAN',
     'license': 'AGPL-3',
 
     'depends': ['base','contacts','account'],
