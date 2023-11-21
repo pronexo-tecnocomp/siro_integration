@@ -5,7 +5,6 @@ from odoo.exceptions import ValidationError, Warning
 import requests
 import logging
 import json
-import math
 
 _logger = logging.getLogger(__name__)
 
@@ -18,9 +17,6 @@ PROD_API_SIRO_URL = "https://apisiro.bancoroela.com.ar:49220/"
 SIRO_LISTADO_PROCESO = "https://apisiro.bancoroela.com.ar:49220/siro/Listados/proceso"
 SIRO_PAGO_ID = "https://apisiro.bancoroela.com.ar:49220/siro/Pagos/"
 
-EMPRESA_SERVICIO = "0447"
-IDENTIFICADOR_CONCEPTO = "0"
-RELLENO = "0000000000000000000000000000000"
 
 
 class SiroConfig(models.Model):
@@ -28,8 +24,7 @@ class SiroConfig(models.Model):
 
     name = fields.Char('Nombre')
     company_id = fields.Many2one('res.company', 'Empresa',
-                                 default=lambda self: self.env['res.company']._company_default_get(
-                                     'financiera.siro.config'))
+                                 default=lambda self: self.env['res.company'])
     state = fields.Selection([('test', 'Test'), ('produccion', 'Produccion')], 'Estado', default='test')
     usuario = fields.Char('Usuario')
     password = fields.Char('Password')
@@ -37,9 +32,9 @@ class SiroConfig(models.Model):
     token_expires = fields.Datetime('Token - Fecha de expiracion')
     # Configuracion codigo de barras
     codigo_barras = fields.Boolean('Generar codigo de barras')
-    empresa_servicio = fields.Char('Empresa de Servicio', default=EMPRESA_SERVICIO,
-                                   help="4 dígitos que no varían, otorgado por SIRO.")
-    identificador_concepto = fields.Char('Identificador Concepto', default=IDENTIFICADOR_CONCEPTO)
+    empresa_servicio = fields.Char('Empresa de Servicio', default="0447",
+                                   help="4 dígitos que no varían, otorgado por SIRO.", readonly=True)
+    identificador_concepto = fields.Char('Identificador Concepto', default="0")
     identificador_cuenta = fields.Char('Identificador Cuenta')
     empresa_cuit = fields.Char('Empresa CUIT')
 
@@ -67,7 +62,6 @@ class SiroConfig(models.Model):
         else:
             raise ValidationError(_("Siro is disabled"))
 
-    @api.one
     def _siro_get_token(self):
         print("siro_get_token")
         # self.ensure_one()
@@ -107,11 +101,9 @@ class SiroConfig(models.Model):
         self.token = False
         self.token_expires = False
 
-    @api.one
     def test_siro_connection(self):
         raise Warning("El token es %s" % self.siro_get_token())
 
-    @api.one
     def siro_obtener_cobros(self):
         headers = {
             'Authorization': "Bearer " + self.siro_get_token(),

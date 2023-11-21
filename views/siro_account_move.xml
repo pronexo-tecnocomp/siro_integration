@@ -4,13 +4,14 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_post']" position="after" type="object">
-                <button string="Generar Código de Barra" class="btn btn-primary" type="object" name="generar_codigo_barra"/>
-            </xpath>
+            <!--            <xpath expr="//button[@name='action_post']" position="after" type="object">
+                            <button string="Generar Código de Barra" class="btn btn-primary" type="object" name="generar_codigo_barra"/>
+                        </xpath>
+                        -->
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="empresa_servicio"/>
-                <field name="identificador_concepto"/>
-                <field name="identificador_cuenta"/>
+                <field name="empresa_servicio" invisible="1"/>
+                <field name="identificador_concepto" invisible="1"/>
+                <field name="identificador_cuenta" invisible="1"/>
 
                 <separator string="1er Vencimiento"/>
                 <field name="fecha_1er_vto"/>
@@ -27,7 +28,7 @@
                 <field name="importe_3er_vto"/>
             </xpath>
             <xpath expr="//notebook" position="before">
-                <separator string="Código de Barra" />
+                <separator string="Código de Barra"/>
                 <field name="codigo_barra" readonly="1"/>
             </xpath>
             <xpath expr="//div[hasclass('d-flex')]/span" position="attributes">

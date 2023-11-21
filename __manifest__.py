@@ -13,7 +13,11 @@
     'depends': ['base','contacts','account'],
 
     'data': [
-        'views/siro_account_move.xml'
+        'data/cron.xml',
+        'security/ir.model.access.csv',
+        'views/siro_account_move.xml',
+        'views/siro_config.xml',
+        'views/res_company_customization.xml'
     ],
     'demo': [],
     'qweb': [],
