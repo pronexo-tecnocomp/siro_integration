@@ -34,6 +34,7 @@ class SiroCodeBar(models.Model):
     importe_3er_vto = fields.Float(digits=(7, 2))
 
     codigo_barra = fields.Char()
+    codigo_pago_elect = fields.Char(string="Código Pago Electronico")
 
     def check_identificador_cuenta(self, rec):
         if rec.id:

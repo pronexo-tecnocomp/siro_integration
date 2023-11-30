@@ -34,8 +34,9 @@ class SiroConfig(models.Model):
     codigo_barras = fields.Boolean('Generar codigo de barras')
     empresa_servicio = fields.Char('Empresa de Servicio', default="0447",
                                    help="4 dígitos que no varían, otorgado por SIRO.", readonly=True)
-    identificador_concepto = fields.Char('Identificador Concepto', default="0")
-    identificador_cuenta = fields.Char('Identificador Cuenta')
+    identificador_concepto = fields.Char('Identificador Concepto', default="0", help="1 Dígito")
+    identificador_usuario = fields.Char('Identificador Cuenta', help="Código para identificar a clientes que van a abonar")
+    identificador_cuenta = fields.Char('Identificador Cuenta', help="10 Dígitos Otorgado por BANCO ROELA")
     empresa_cuit = fields.Char('Empresa CUIT')
 
     journal_id = fields.Many2one('account.journal', 'Diario de Cobro', domain="[('type', 'in', ('cash', 'bank'))]")

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_partner_siro_form_inherited" model="ir.ui.view">
+            <field name="name">Extension Res Partner form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                    <page name="Integración Con Siro">
+                        <group>
+                            <field name="plantilla"/>
+                            <separator></separator>
+                            <field name="tipo"/>
+                            <field name="dia_pago"/>
+                            <field name="crear_factura"/>
+                            <field name="tipo_impuesto"/>
+                            <field name="dias_gracia"/>
+                            <field name="aplicar_corte"/>
+                            <field name="bajar_velocidad"/>
+                            <field name="primer_venc"/>
+                            <field name="segundo_venc"/>
+                            <field name="tercer_venc"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

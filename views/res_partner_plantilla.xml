@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="plantilla_siro_view_tree">
+            <field name="name">plantilla.siro tree</field>
+            <field name="model">plantilla.siro</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nombre"/>
+                    <field name="tipo"/>
+                    <field name="dia_pago"/>
+                    <field name="crear_factura"/>
+                    <field name="tipo_impuesto"/>
+                    <field name="dias_gracia"/>
+                    <field name="aplicar_corte"/>
+                    <field name="bajar_velocidad"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="plantilla_siro_view_form">
+            <field name="name">plantilla.siro form</field>
+            <field name="model">plantilla.siro</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="nombre"/>
+                            <field name="tipo"/>
+                            <field name="dia_pago"/>
+                            <field name="crear_factura"/>
+                            <field name="tipo_impuesto"/>
+                            <field name="dias_gracia"/>
+                            <field name="aplicar_corte"/>
+                            <field name="bajar_velocidad"/>
+
+                            <field name="primer_venc"/>
+                            <field name="segundo_venc"/>
+                            <field name="tercer_venc"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="res_partner_plantilla_action">
+            <field name="name">Plantillas</field>
+            <field name="res_model">plantilla.siro</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Plantillas" id="menu_item_plantillas_siro" parent="contacts.res_partner_menu_config"
+                  action="res_partner_plantilla_action" sequence="-100"/>
+    </data>
+</odoo>

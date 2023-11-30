@@ -17,19 +17,21 @@
                 <field name="fecha_1er_vto"/>
                 <field name="importe_1er_vto"/>
 
-                <separator string="2do Vencimiento"/>
-                <field name="dias_2do_vto"/>
-                <field name="importe_2do_vto"/>
+                <separator string="2do Vencimiento" invisible="1"/>
+                <field name="dias_2do_vto" invisible="1"/>
+                <field name="importe_2do_vto" invisible="1"/>
 
             </xpath>
             <xpath expr="//group[@id='header_right_group']/field[@name='currency_id']" position="after">
-                <separator string="3er Vencimiento"/>
-                <field name="dias_3do_vto"/>
-                <field name="importe_3er_vto"/>
+                <separator string="3er Vencimiento" invisible="1"/>
+                <field name="dias_3do_vto" invisible="1"/>
+                <field name="importe_3er_vto" invisible="1"/>
             </xpath>
             <xpath expr="//notebook" position="before">
                 <separator string="Código de Barra"/>
                 <field name="codigo_barra" readonly="1"/>
+                <separator string="Código Pago Electronico"/>
+                <field name="codigo_pago_elect" readonly="1"/>
             </xpath>
             <xpath expr="//div[hasclass('d-flex')]/span" position="attributes">
                 <attribute name="invisible">1</attribute>

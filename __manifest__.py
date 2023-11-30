@@ -10,14 +10,16 @@
     'maintainer': 'DEVMAN',
     'license': 'AGPL-3',
 
-    'depends': ['base','contacts','account'],
+    'depends': ['base', 'contacts', 'account'],
 
     'data': [
         'data/cron.xml',
         'security/ir.model.access.csv',
         'views/siro_account_move.xml',
         'views/siro_config.xml',
-        'views/res_company_customization.xml'
+        'views/res_company_customization.xml',
+        'views/res_partner_plantilla.xml',
+        'views/res_partner_custom_view.xml'
     ],
     'demo': [],
     'qweb': [],
