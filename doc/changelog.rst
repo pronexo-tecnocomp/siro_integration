@@ -14,3 +14,8 @@
 
 - Cambios en la generación del codigo de barras
 - Siro_id y views
+
+16.4.1 (6th Dec 2023)
+----------------------
+- siro.config -> Solo Form View
+- siro.config -> Trae el ultimo registro guardado al cargar la form view
