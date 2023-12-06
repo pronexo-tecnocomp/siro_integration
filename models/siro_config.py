@@ -1,4 +1,3 @@
-
 from odoo import fields, models, api, _
 from datetime import datetime, timedelta
 from odoo.exceptions import ValidationError, Warning
@@ -18,7 +17,6 @@ SIRO_LISTADO_PROCESO = "https://apisiro.bancoroela.com.ar:49220/siro/Listados/pr
 SIRO_PAGO_ID = "https://apisiro.bancoroela.com.ar:49220/siro/Pagos/"
 
 
-
 class SiroConfig(models.Model):
     _name = 'siro.config'
 
@@ -30,12 +28,15 @@ class SiroConfig(models.Model):
     password = fields.Char('Password')
     token = fields.Text('Token')
     token_expires = fields.Datetime('Token - Fecha de expiracion')
+    enviroment = fields.Selection([('production', 'Producción'), ('testing', 'Homologación')], string="Enviroment",
+                                  default="testing")
     # Configuracion codigo de barras
     codigo_barras = fields.Boolean('Generar codigo de barras')
     empresa_servicio = fields.Char('Empresa de Servicio', default="0447",
                                    help="4 dígitos que no varían, otorgado por SIRO.", readonly=True)
     identificador_concepto = fields.Char('Identificador Concepto', default="0", help="1 Dígito")
-    identificador_usuario = fields.Char('Identificador Cuenta', help="Código para identificar a clientes que van a abonar")
+    identificador_usuario = fields.Char('Identificador Cuenta',
+                                        help="Código para identificar a clientes que van a abonar")
     identificador_cuenta = fields.Char('Identificador Cuenta', help="10 Dígitos Otorgado por BANCO ROELA")
     empresa_cuit = fields.Char('Empresa CUIT')
 
@@ -46,6 +47,37 @@ class SiroConfig(models.Model):
     cobros_days_check = fields.Integer('Dias para chequear cobros', default=7)
     email_template_id = fields.Many2one('mail.template', 'Plantilla de cuponera')
     report_name = fields.Char('Pdf adjunto en email')
+
+    field_invisible = fields.Char()
+
+    @api.onchange('field_invisible')
+    def get_last_data(self):
+        last_record = self.env['siro.config'].search([], limit=1, order='id desc')
+        if last_record:
+            self.write({
+                'name': last_record.name,
+                'company_id': last_record.company_id.id,
+                'state': last_record.state,
+                'usuario': last_record.usuario,
+                'password': last_record.password,
+                'token': last_record.token,
+                'token_expires': last_record.token_expires,
+                'enviroment': last_record.enviroment,
+                'codigo_barras': last_record.codigo_barras,
+                'empresa_servicio': last_record.empresa_servicio,
+                'identificador_concepto': last_record.identificador_concepto,
+                'identificador_usuario': last_record.identificador_usuario,
+                'identificador_cuenta': last_record.identificador_cuenta,
+                'empresa_cuit': last_record.empresa_cuit,
+                'journal_id': last_record.journal_id.id,
+                'factura_electronica': last_record.factura_electronica,
+                'set_default_payment': last_record.set_default_payment,
+                'cobros_days_check': last_record.cobros_days_check,
+                'email_template_id': last_record.email_template_id.id,
+                'report_name': last_record.report_name,
+            })
+        else:
+            pass
 
     def get_auth_url(self):
         self.ensure_one()

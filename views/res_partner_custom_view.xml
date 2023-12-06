@@ -17,7 +17,7 @@
                             <field name="tipo_impuesto"/>
                             <field name="dias_gracia"/>
                             <field name="aplicar_corte"/>
-                            <field name="bajar_velocidad"/>
+                            <field name="bajar_velocidad" widget="boolean_toggle"/>
                             <field name="primer_venc"/>
                             <field name="segundo_venc"/>
                             <field name="tercer_venc"/>

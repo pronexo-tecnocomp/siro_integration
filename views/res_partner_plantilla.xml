@@ -27,11 +27,11 @@
                             <field name="nombre"/>
                             <field name="tipo"/>
                             <field name="dia_pago"/>
-                            <field name="crear_factura"/>
+                            <field name="crear_factura" placeholder="Ej: 13 Días Antes..."/>
                             <field name="tipo_impuesto"/>
                             <field name="dias_gracia"/>
                             <field name="aplicar_corte"/>
-                            <field name="bajar_velocidad"/>
+                            <field name="bajar_velocidad" widget="boolean_toggle"/>
 
                             <field name="primer_venc"/>
                             <field name="segundo_venc"/>
