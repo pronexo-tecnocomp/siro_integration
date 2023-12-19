@@ -14,6 +14,9 @@
 
     'data': [
         'data/cron.xml',
+        'data/sequence.xml',
+        'report/report.xml',
+        'report/boleta_pago.xml',
         'security/ir.model.access.csv',
         'views/siro_config.xml',
         'views/siro_account_move.xml',

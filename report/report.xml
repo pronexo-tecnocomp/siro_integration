@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    PAPER FORMAT-->
+    <record id="paperformat_page_siro" model="report.paperformat">
+        <field name="name">Format - Siro Page</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">7</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">7</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="boleta_pago_siro" model="ir.actions.report">
+        <field name="name">Boleta de Pago</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">siro_codebar.reporte_boleta_pago_siro</field>
+        <field name="report_file">siro_codebar.reporte_boleta_pago_siro</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_page_siro"/>
+    </record>
+</odoo>

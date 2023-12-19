@@ -19,3 +19,10 @@
 ----------------------
 - siro.config -> Solo Form View
 - siro.config -> Trae el ultimo registro guardado al cargar la form view
+
+16.5.1 (19th Dec 2023)
+----------------------
+- Agregado de Reporte de Boleta de Pago
+- Agregado de sequencia para el reporte de "Boleta de Pago"
+- Oculacion de campos de Siro si la factura es distinta a out_invoice
+
