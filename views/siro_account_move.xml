@@ -8,10 +8,16 @@
                             <button string="Generar Código de Barra" class="btn btn-primary" type="object" name="generar_codigo_barra"/>
                         </xpath>
                         -->
+            <xpath expr="//header" position="inside">
+                <button name="boleta_pago_reporte" type="object" class="btn btn-primary" string="Boleta de Pago"
+                        attrs="{'invisible': [('abono_siro', '=', False)]}"/>
+            </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="empresa_servicio" invisible="1"/>
                 <field name="identificador_concepto" invisible="1"/>
                 <field name="identificador_cuenta" invisible="1"/>
+                <field name="abono_siro" invisible="0"/>
+                <field name="factura_paga" invisible="0"/>
 
                 <separator string="1er Vencimiento" attrs="{'invisible': [('move_type', '!=','out_invoice')]}"/>
                 <field name="fecha_1er_vto" attrs="{'invisible': [('move_type', '!=','out_invoice')]}"/>

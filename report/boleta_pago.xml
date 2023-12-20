@@ -79,9 +79,18 @@
                         margin-top: 10px;
                         }
                     </style>
-                    <header>
-                        <h1 style="font-weight: 900;">PAGADO</h1>
-                    </header>
+                    <t t-if="o.factura_paga">
+                        <header>
+
+                            <h1 style="font-weight: 900;">PAGADO</h1>
+                        </header>
+
+                    </t>
+                    <t t-else="">
+                        <header style="background-color: red;">
+                            <h1 style="font-weight: 900;">DEUDADO</h1>
+                        </header>
+                    </t>
                     <div id="factura-container">
                         <div id="img-container">
                             <img src="data:image/png;base64,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"
@@ -89,7 +98,9 @@
                         </div>
                         <div id="info-factura">
                             <h2>
-                                <strong>Factura # <t t-esc="o.sequence"/></strong>
+                                <strong>Factura #
+                                    <t t-esc="o.secuencia"/>
+                                </strong>
                             </h2>
                             <h5 style="font-weight: 100;">Fecha emisión
                                 <strong>
@@ -157,7 +168,8 @@
                                             <t t-esc="invoice.product_id.name"/>
                                         </td>
                                         <td>
-                                           $ <t t-esc="invoice.price_unit"/>
+                                            $
+                                            <t t-esc="invoice.price_unit"/>
                                         </td>
                                         <td>
                                             <t t-esc="invoice.tax_ids.name"/>
@@ -166,7 +178,8 @@
                                             <t t-esc="invoice.quantity"/>
                                         </td>
                                         <td>
-                                           $ <t t-esc="invoice.price_subtotal"/>
+                                            $
+                                            <t t-esc="invoice.price_subtotal"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -198,7 +211,8 @@
                         <div>
                             <p>
                                 <strong>TOTAL:</strong>
-                                $<t t-esc="o.amount_total"/>
+                                $
+                                <t t-esc="o.amount_total"/>
                             </p>
                         </div>
 

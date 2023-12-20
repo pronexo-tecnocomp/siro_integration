@@ -19,7 +19,7 @@ DIGITO_VERIFICADOR_ADICIONAL = 5
 class SiroCodeBar(models.Model):
     _inherit = "account.move"
 
-    sequence = fields.Char()
+    secuencia = fields.Char()
     empresa_servicio = fields.Char(default="0447", readonly=True, size=4)
     identificador_concepto = fields.Char(size=1)
     identificador_cuenta = fields.Char(size=10)
@@ -37,12 +37,16 @@ class SiroCodeBar(models.Model):
     codigo_barra = fields.Char()
     codigo_pago_elect = fields.Char(string="Código Pago Electronico")
 
+    abono_siro = fields.Boolean(default=False)
+    factura_paga = fields.Boolean(default=False)
+
+    def boleta_pago_reporte(self):
+        return self.env.ref('siro_codebar.boleta_pago_siro').report_action(self)
+
     @api.model
     def create(self, vals_list):
-        vals_list['sequence'] = self.env['ir.sequence'].next_by_code('account.move') or _('New')
+        vals_list['secuencia'] = self.env['ir.sequence'].next_by_code('account.move') or _('New')
         res = super(SiroCodeBar, self).create(vals_list)
-
-
         return res
 
     def check_identificador_cuenta(self, rec):

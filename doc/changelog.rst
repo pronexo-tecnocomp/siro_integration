@@ -26,3 +26,8 @@
 - Agregado de sequencia para el reporte de "Boleta de Pago"
 - Oculacion de campos de Siro si la factura es distinta a out_invoice
 
+16.6.1 (20th Dec 2023)
+----------------------
+- Campos de tipo boolean para la comprobacion de si la factura esta paga y si es un abono de siro
+- Se puede imprimir el reporte de Boleta de Pago si el campo de abono_siro es True
+- Marca en el reporte de boleta de pago si no esta paga la factura como "DEUDADO"
