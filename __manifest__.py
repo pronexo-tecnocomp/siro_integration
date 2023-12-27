@@ -22,7 +22,8 @@
         'views/siro_account_move.xml',
         'views/res_company_customization.xml',
         'views/res_partner_plantilla.xml',
-        'views/res_partner_custom_view.xml'
+        'views/res_partner_custom_view.xml',
+        'views/estado_res_partner.xml',
     ],
     'demo': [],
     'qweb': [],

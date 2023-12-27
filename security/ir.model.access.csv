@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 user_financiera_siro_config,financiera.siro.config,model_siro_config,base.group_system,1,1,1,1
 res_partner_plantilla,res_partner_plantillas_siro,model_plantilla_siro,,1,1,1,1
+res_partner_estado,rec_partner_estados_siro,model_estado_res_partner,,1,1,1,1

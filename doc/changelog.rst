@@ -31,3 +31,15 @@
 - Campos de tipo boolean para la comprobacion de si la factura esta paga y si es un abono de siro
 - Se puede imprimir el reporte de Boleta de Pago si el campo de abono_siro es True
 - Marca en el reporte de boleta de pago si no esta paga la factura como "DEUDADO"
+
+16.7.1 (27th Dec 2023)
+----------------------
+- Agregado campo de estado como tag
+- Agregado campo incremental ID con sequencia
+- Agregado campo N° Codigo de pago
+- Agregado de pagina "Servicios" en res.partner
+- Agregado de pagina "Información Adicional" en res.partner
+- Cambios de campos en la page "Integracion con Siro"
+- Agregado de page "Estadisticas"
+- Agregado de page "Documentos"
+- Nuevo modelo de Transacciones (Sin Terminar)

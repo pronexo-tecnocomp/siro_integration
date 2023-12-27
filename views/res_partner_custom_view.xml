@@ -8,21 +8,59 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[@name='internal_notes']" position="after">
                     <page name="Integración Con Siro">
-                        <group>
-                            <field name="plantilla"/>
-                            <separator></separator>
-                            <field name="tipo"/>
-                            <field name="dia_pago"/>
-                            <field name="crear_factura"/>
-                            <field name="tipo_impuesto"/>
-                            <field name="dias_gracia"/>
-                            <field name="aplicar_corte"/>
-                            <field name="bajar_velocidad" widget="boolean_toggle"/>
-                            <field name="primer_venc"/>
-                            <field name="segundo_venc"/>
-                            <field name="tercer_venc"/>
+                        <group string="Integración Con Siro">
+                            <group>
+                                <field name="plantilla"/>
+                                <separator/>
+                                <field name="tipo"/>
+                                <field name="dia_pago"/>
+                                <field name="crear_factura"/>
+                                <field name="tipo_impuesto"/>
+                                <field name="dias_gracia"/>
+                            </group>
+                            <group>
+                                <separator/>
+                                <separator/>
+                                <field name="aplicar_corte"/>
+                                <field name="bajar_velocidad" widget="boolean_toggle"/>
+                                <field name="primer_venc"/>
+                                <field name="segundo_venc"/>
+                                <field name="tercer_venc"/>
+                            </group>
                         </group>
                     </page>
+                    <page name="Información Adicional">
+                        <group>
+                            <field name="tipo_debito"/>
+                            <field name="dato_debito"/>
+                            <field name="dato_extra"/>
+                        </group>
+                    </page>
+                    <page name="Servicios">
+                        <group string="Servicios de Internet"></group>
+                        <group string="Equipos Asignados"></group>
+                        <group string="Servicios Voip"></group>
+                        <group string="Productos y otros Servicios recurrentes"></group>
+                        <group string="Productos y otros Servicios"></group>
+                    </page>
+                    <page name="Documentos">
+                        <group string="Contratos"></group>
+                        <group string="Documentos PDF"></group>
+                        <group string="Notas"></group>
+                    </page>
+                    <page name="Estadisticas">
+                    </page>
+                </xpath>
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="num_cod_pago"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//span[@name='address_name']" position="before">
+                    <field name="siro_id2" string="ID"/>
+                    <field name="estado" widget="many2one"/>
                 </xpath>
             </field>
         </record>

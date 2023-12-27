@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="estado_siro_view_tree">
+            <field name="name">estado.res_partner TREE VIEW</field>
+            <field name="model">estado.res_partner</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="estado_siro_view_form">
+            <field name="name">estado.res_partner FORM VIEW</field>
+            <field name="model">estado.res_partner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="res_partner_estado_action">
+            <field name="name">Plantillas</field>
+            <field name="res_model">plantilla.siro</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Estados" id="menu_item_estados_siro" parent="contacts.res_partner_menu_config"
+                  action="res_partner_estado_action" sequence="-100"/>
+    </data>
+</odoo>

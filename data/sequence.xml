@@ -7,5 +7,12 @@
             <field name="padding">8</field>
             <field eval="False" name="company_id"/>
         </record>
+
+        <record id="secuencia_de_siro_res_partner" model="ir.sequence">
+            <field name="name">Secuencia para id de Siro en res.partner</field>
+            <field name="code">res.partner</field>
+            <field name="padding">0</field>
+            <field eval="False" name="company_id"/>
+        </record>
     </data>
 </odoo>
